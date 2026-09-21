@@ -1,0 +1,12 @@
+{
+  "name": "TREND DZ",
+  "short_name": "TREND DZ",
+  "description": "المنصة الاجتماعية الجزائرية",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#e11d48"
+}
