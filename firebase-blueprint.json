@@ -1,0 +1,92 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile information and Algerian wilaya association",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "username": { "type": "string" },
+        "displayName": { "type": "string" },
+        "avatarUrl": { "type": "string" },
+        "bio": { "type": "string" },
+        "wilaya": { "type": "string" },
+        "wilayaNumber": { "type": "number" },
+        "followersCount": { "type": "number" },
+        "followingCount": { "type": "number" },
+        "postsCount": { "type": "number" },
+        "isVerified": { "type": "boolean" },
+        "role": { "type": "string", "enum": ["user", "owner"] },
+        "joinedAt": { "type": "string" }
+      },
+      "required": ["id", "username", "displayName", "wilaya", "role"]
+    },
+    "Post": {
+      "title": "Post",
+      "description": "Social feed post containing text, image, video, and engagement counters",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorUsername": { "type": "string" },
+        "authorAvatar": { "type": "string" },
+        "authorRole": { "type": "string", "enum": ["user", "owner"] },
+        "authorWilaya": { "type": "string" },
+        "wilayaNumber": { "type": "number" },
+        "category": { "type": "string", "enum": ["all", "memes", "video", "posts", "audio"] },
+        "content": { "type": "string" },
+        "mediaUrl": { "type": "string" },
+        "mediaType": { "type": "string", "enum": ["image", "video", "none"] },
+        "hashtags": { "type": "array", "items": { "type": "string" } },
+        "soundTitle": { "type": "string" },
+        "likesCount": { "type": "number" },
+        "commentsCount": { "type": "number" },
+        "sharesCount": { "type": "number" },
+        "viewsCount": { "type": "number" },
+        "likedBy": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "authorId", "content", "category", "authorWilaya"]
+    },
+    "Comment": {
+      "title": "Comment",
+      "description": "Comment on a post",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "postId": { "type": "string" },
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorUsername": { "type": "string" },
+        "authorAvatar": { "type": "string" },
+        "authorRole": { "type": "string", "enum": ["user", "owner"] },
+        "authorWilaya": { "type": "string" },
+        "content": { "type": "string" },
+        "likesCount": { "type": "number" },
+        "likedBy": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "postId", "authorId", "content"]
+    },
+    "Report": {
+      "title": "Report",
+      "description": "Moderation report for inappropriate content or scams",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "targetType": { "type": "string", "enum": ["post", "user", "comment"] },
+        "targetId": { "type": "string" },
+        "reporterId": { "type": "string" },
+        "reason": { "type": "string", "enum": ["spam", "harassment", "inappropriate", "fake_scam"] },
+        "details": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "targetType", "targetId", "reporterId", "reason"]
+    }
+  },
+  "firestore": {
+    "rules": "firestore.rules"
+  }
+}

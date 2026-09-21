@@ -1,0 +1,6 @@
+{
+  "name": "TREND DZ",
+  "description": "منصة اجتماعية جزائرية تجمع الترندات، الميمز، الفيديوهات القصيرة والمنشورات الجزائرية",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
